@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://fav.farm/🍼" /> 
+  <title>Kalkulačka mléka pro štěně</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 15px;
+      line-height: 1.5;
+      color: #222;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #result, #guide {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    #result {
+      background: #eef7ff;
+      border: 1px solid #bcdfff;
+    }
+    #guide {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+    }
+    #guide h3 {
+      margin-top: 0;
+    }
+    /* menší fonty a větší odstavce na mobilech */
+    @media (max-width: 600px) {
+      body { font-size: 1rem; }
+      h2 { font-size: 1.3rem; }
+      input, select, button { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Kalkulačka denní dávky mléka</h2>
+  
+  <label>Hmotnost štěněte (g):
+    <input type="number" id="weight" value="1420" placeholder="např. 1200">
+  </label>
+  
+  <label>Datum narození štěněte:
+    <input type="date" id="dob" value="2025-08-05">
+  </label>
+  
+  <label>Velikost odměrky:
+    <select id="scoop">
+      <option value="4.5">Malá (4,5 g)</option>
+      <option value="15" selected>Velká (15 g)</option>
+    </select>
+  </label>
+  
+  <button onclick="calculate()">Spočítat</button>
+
+  <div id="result"></div>
+  <div id="guide"></div>
+
+  <script>
+	calculate();
+	
+    function calculate() {
+      const w = parseFloat(document.getElementById("weight").value);
+      const scoopSize = parseFloat(document.getElementById("scoop").value);
+      const dob = document.getElementById("dob").value;
+
+      const points = [
+        { w: 250, d: 100 },
+        { w: 500, d: 160 },
+        { w: 1000, d: 250 },
+        { w: 2000, d: 400 },
+        { w: 5000, d: 900 }
+      ];
+
+      if (isNaN(w) || !dob) {
+        document.getElementById("result").innerText = "Zadej prosím hmotnost a datum narození.";
+        document.getElementById("guide").innerText = "";
+        return;
+      }
+
+      const today = new Date();
+      const birthDate = new Date(dob);
+      const ageDays = Math.floor((today - birthDate) / (1000*60*60*24));
+
+      let feeds = null;
+      if (ageDays >= 2 && ageDays <= 14) feeds = {min:6, max:8};
+      else if (ageDays >= 15 && ageDays <= 21) feeds = {min:6, max:6};
+      else if (ageDays >= 22 && ageDays <= 28) feeds = {min:6, max:6};
+      else if (ageDays >= 29 && ageDays <= 35) feeds = {min:4, max:6};
+      else if (ageDays >= 36 && ageDays <= 42) feeds = {min:2, max:6};
+      else if (ageDays >= 43 && ageDays <= 49) feeds = {min:0, max:3};
+
+      let d = null;
+      for (let i = 0; i < points.length - 1; i++) {
+        let p1 = points[i], p2 = points[i + 1];
+        if (w >= p1.w && w <= p2.w) {
+          let slope = (p2.d - p1.d) / (p2.w - p1.w);
+          d = p1.d + slope * (w - p1.w);
+        }
+      }
+
+      if (d === null) {
+        document.getElementById("result").innerText = "Hmotnost je mimo rozsah (250–5000 g).";
+        document.getElementById("guide").innerText = "";
+      } else {
+        let powder = d * 30 / 125;
+        let water = d * 100 / 125;
+        let scoops = powder / scoopSize;
+
+        let feedCount = feeds ? Math.ceil((feeds.min + feeds.max) / 2) : 0;
+        let perFeed = feedCount > 0 ? (d / feedCount) : 0;
+
+        document.getElementById("result").innerHTML =
+          "<b>Věk štěněte:</b> " + ageDays + " dní<br>" +
+          "<b>Denní dávka:</b> " + d.toFixed(0) + " ml hotového mléka<br>" +
+          "➡ Prášek: " + powder.toFixed(1) + " g<br>" +
+          "➡ Voda: " + water.toFixed(0) + " ml<br>" +
+          "➡ Odměrky (" + scoopSize + " g): " + scoops.toFixed(1) + "<br>" +
+          (feedCount > 0 
+            ? "<b>Krmení za den:</b> " + feedCount + "<br><b>Jedna dávka:</b> " + perFeed.toFixed(0) + " ml"
+            : "Podle věku už není krmení mlékem potřeba.");
+
+        if (feedCount > 0) {
+          document.getElementById("guide").innerHTML = `
+            <h3>Návod k přípravě</h3>
+            <p>1️⃣ Ohřej <b>${water.toFixed(0)} ml</b> vody na cca 50 °C.</p>
+            <p>2️⃣ Přidej <b>${powder.toFixed(1)} g</b> prášku (${scoops.toFixed(1)} odměrek po ${scoopSize} g).</p>
+            <p>3️⃣ Dobře promíchej, aby nezůstaly hrudky.</p>
+            <p>4️⃣ Zchlaď na tělesnou teplotu (cca 37 °C).</p>
+            <p>5️⃣ Celkovou denní dávku <b>${d.toFixed(0)} ml</b> rozděl na <b>${feedCount}</b> krmení.</p>
+            <p>➡ Na jedno krmení dej přibližně <b>${perFeed.toFixed(0)} ml</b> hotového mléka.</p>
+          `;
+        } else {
+          document.getElementById("guide").innerHTML = `
+            <h3>Návod k přípravě</h3>
+            <p>Podle věku už štěně mléko nepotřebuje. Začni jej převádět na pevnou stravu.</p>
+          `;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
