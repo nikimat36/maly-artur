@@ -2,104 +2,170 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Profil pejska - Artur</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            min-height: 100vh;
-        }
+body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+}
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
 
-        /* Menu vlevo (desktop) */
-        .sidebar {
-            width: 220px;
-            background-color: #f4f4f4;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-        .sidebar h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .sidebar a {
-            display: block;
-            text-decoration: none;
-            color: #333;
-            margin: 8px 0;
-            padding: 5px;
-            border-radius: 5px;
-        }
-        .sidebar a:hover {
-            background-color: #ddd;
-        }
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
 
-        /* Obsah vpravo */
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        .dog-photo {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .info {
-            margin-top: 15px;
-        }
-        .info p {
-            margin: 5px 0;
-        }
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
 
-        /* 📱 Responzivita pro mobily */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                box-shadow: none;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-            .sidebar h2 {
-                display: none; /* na mobilu schováme nápis "Menu" */
-            }
-            .sidebar a {
-                margin: 0 10px;
-                padding: 10px;
-                font-weight: bold;
-            }
-            .content {
-                padding: 15px;
-            }
-        }
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
     </style>
 </head>
 <body>
-    <!-- Menu -->
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <a href="calendar.html">Kalendar</a>
-        <a href="feeding.html">Krmeni</a>
-    </div>
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:void(0)">Profil</a></li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="artur.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4 id="profile-name">Artur</h4>
+                      <p class="text-secondary mb-1">Štěně, nalezenec</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <a href="calendar.html"><h6 class="mb-0">Kalendář</h6></a>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <a href="feeding.html"><h6 class="mb-0">Krmení</h6></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Jméno</h6>
+                    </div>
+                    <div id="nameV" class="col-sm-9 text-secondary"></div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Narozen</h6>
+                    </div>
+                    <div id="bornV" class="col-sm-9 text-secondary"></div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Pohlaví</h6>
+                    </div>
+                    <div id="sexV" class="col-sm-9 text-secondary"></div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Rasa</h6>
+                    </div>
+                    <div id="breedV" class="col-sm-9 text-secondary"></div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Váha (g)</h6>
+                    </div>
+                    <div id="weightV" class="col-sm-9 text-secondary"></div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <p>Nalezen přivázaný venku v Ostravě 21.8.2025 v pochybné čtvrti.<br>
+					  Téhož dne odvezen na veterinu kde byla provedena základní prohlídka. Veterinář odhaduje věk 3týdny, většího plemene. Ještě neočkovaný, nečipovaný, neodčervený. Třeba dokrmovat.<br>
+					  Do dočasné péče v Metylovicích byl převezen téhož dne. <br>
+					  Od doby nálezu nebyla hlášena žádná ztráta či krádež štěněte. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-    <!-- Obsah -->
-    <div class="content">
-        <h1>Profil pejska: Artur</h1>
-        <img src="artur.png" alt="Foto pejska Artura" class="dog-photo">
-        
-        <div class="info">
-            <p><strong>Jméno:</strong> Artur</p>
-            <p><strong>Pohlaví:</strong> samec</p>
-            <p><strong>Rasa:</strong> labrador?</p>
-            <p><strong>Narozen:</strong> 5.8.2025 ?</p>
-            <p><strong>Váha:</strong> 1420g (k 22.8.2025)</p>
+
+
+            </div>
+          </div>
+
         </div>
     </div>
+	<script src="artur.js"></script>
+	<script>
+		onLoad();
+		
+		function onLoad(){
+			document.getElementById('nameV').innerHTML = puppy.name;
+			document.getElementById('profile-name').innerHTML = `${puppy.name} (${puppy.age} dní)`;
+			document.getElementById('bornV').innerHTML = `${puppy.born.value} (${puppy.born.note})`;
+			document.getElementById('sexV').innerHTML = puppy.sex;
+			document.getElementById('breedV').innerHTML = `${puppy.breed.value} (${puppy.breed.note})`;
+			document.getElementById('weightV').innerHTML = `${puppy.weight.value} (${puppy.weight.note})`;
+		}
+	</script>
 </body>
 </html>
