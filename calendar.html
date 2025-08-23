@@ -2,12 +2,23 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Kalendář událostí</title>
+  
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
+	body{
+		margin-top:20px;
+		color: #1a202c;
+		text-align: left;
+		background-color: #e2e8f0;    
+	}
+	.main-body {
+		padding: 15px;
+	}
+	.card {
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+		padding: 10px;
+	}
     .calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -72,101 +83,108 @@
   </style>
 </head>
 <body>
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:void(0)">Kalendář</a></li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+		  <div class="card">
+		  
+			<h2>Červenec 2025</h2>
+			<div class="calendar" data-month="2025-07">
+				<div class="day"><div class="day-number">28</div></div>
+				<div class="day"><div class="day-number">29</div></div>
+				<div class="day"><div class="day-number">30</div></div>
+				<div class="day"><div class="day-number">31</div></div>
+				<div class="day empty"></div>
+				<div class="day empty"></div>
+				<div class="day empty"></div>
+			</div>
 
-<h2>Červenec 2025</h2>
-<div class="calendar" data-month="2025-07">
-	<div class="day"><div class="day-number">28</div></div>
-    <div class="day"><div class="day-number">29</div></div>
-    <div class="day"><div class="day-number">30</div></div>
-  	<div class="day"><div class="day-number">31</div></div>
-	<div class="day empty"></div>
-    <div class="day empty"></div>
-    <div class="day empty"></div>
+		<h2>Srpen 2025</h2>
+		<div class="calendar" data-month="2025-08">
+		  <div class="day empty"></div>
+		  <div class="day empty"></div>
+		  <div class="day empty"></div>
+		  <div class="day empty"></div>
+		  <div class="day"><div class="day-number">1</div></div>
+		  <div class="day weekend"><div class="day-number">2</div></div>
+		  <div class="day weekend"><div class="day-number">3</div></div>
+		  <div class="day"><div class="day-number">4</div></div>
+		  <div class="day"><div class="day-number">5</div></div>
+		  <div class="day"><div class="day-number">6</div></div>
+		  <div class="day"><div class="day-number">7</div></div>
+		  <div class="day"><div class="day-number">8</div></div>
+		  <div class="day weekend"><div class="day-number">9</div></div>
+		  <div class="day weekend"><div class="day-number">10</div></div>
+		  <div class="day"><div class="day-number">11</div></div>
+		  <div class="day"><div class="day-number">12</div></div>
+		  <div class="day"><div class="day-number">13</div></div>
+		  <div class="day"><div class="day-number">14</div></div>
+		  <div class="day"><div class="day-number">15</div></div>
+		  <div class="day weekend"><div class="day-number">16</div></div>
+		  <div class="day weekend"><div class="day-number">17</div></div>
+		  <div class="day"><div class="day-number">18</div></div>
+		  <div class="day"><div class="day-number">19</div></div>
+		  <div class="day"><div class="day-number">20</div></div>
+		  <div class="day"><div class="day-number">21</div></div>
+		  <div class="day"><div class="day-number">22</div></div>
+		  <div class="day weekend"><div class="day-number">23</div></div>
+		  <div class="day weekend"><div class="day-number">24</div></div>
+		  <div class="day"><div class="day-number">25</div></div>
+		  <div class="day"><div class="day-number">26</div></div>
+		  <div class="day"><div class="day-number">27</div></div>
+		  <div class="day"><div class="day-number">28</div></div>
+		  <div class="day"><div class="day-number">29</div></div>
+		  <div class="day weekend"><div class="day-number">30</div></div>
+		  <div class="day weekend"><div class="day-number">31</div></div>
+		</div>
+
+		<h2>Září 2025</h2>
+		<div class="calendar" data-month="2025-09">
+		  <div class="day"><div class="day-number">1</div></div>
+		  <div class="day"><div class="day-number">2</div></div>
+		  <div class="day"><div class="day-number">3</div></div>
+		  <div class="day"><div class="day-number">4</div></div>
+		  <div class="day"><div class="day-number">5</div></div>
+		  <div class="day weekend"><div class="day-number">6</div></div>
+		  <div class="day weekend"><div class="day-number">7</div></div>
+		  <div class="day"><div class="day-number">8</div></div>
+		  <div class="day"><div class="day-number">9</div></div>
+		  <div class="day"><div class="day-number">10</div></div>
+		  <div class="day"><div class="day-number">11</div></div>
+		  <div class="day"><div class="day-number">12</div></div>
+		  <div class="day weekend"><div class="day-number">13</div></div>
+		  <div class="day weekend"><div class="day-number">14</div></div>
+		  <div class="day"><div class="day-number">15</div></div>
+		  <div class="day"><div class="day-number">16</div></div>
+		  <div class="day"><div class="day-number">17</div></div>
+		  <div class="day"><div class="day-number">18</div></div>
+		  <div class="day"><div class="day-number">19</div></div>
+		  <div class="day weekend"><div class="day-number">20</div></div>
+		  <div class="day weekend"><div class="day-number">21</div></div>
+		  <div class="day"><div class="day-number">22</div></div>
+		  <div class="day"><div class="day-number">23</div></div>
+		  <div class="day"><div class="day-number">24</div></div>
+		  <div class="day"><div class="day-number">25</div></div>
+		  <div class="day"><div class="day-number">26</div></div>
+		  <div class="day weekend"><div class="day-number">27</div></div>
+		  <div class="day weekend"><div class="day-number">28</div></div>
+		  <div class="day"><div class="day-number">29</div></div>
+		  <div class="day"><div class="day-number">30</div></div>
+		</div>
+		</div>
+
+	</div>
 </div>
-
-<h2>Srpen 2025</h2>
-<div class="calendar" data-month="2025-08">
-  <div class="day empty"></div>
-  <div class="day empty"></div>
-  <div class="day empty"></div>
-  <div class="day"><div class="day-number">1</div></div>
-  <div class="day weekend"><div class="day-number">2</div></div>
-  <div class="day weekend"><div class="day-number">3</div></div>
-  <div class="day"><div class="day-number">4</div></div>
-  <div class="day"><div class="day-number">5</div></div>
-  <div class="day"><div class="day-number">6</div></div>
-  <div class="day"><div class="day-number">7</div></div>
-  <div class="day"><div class="day-number">8</div></div>
-  <div class="day weekend"><div class="day-number">9</div></div>
-  <div class="day weekend"><div class="day-number">10</div></div>
-  <div class="day"><div class="day-number">11</div></div>
-  <div class="day"><div class="day-number">12</div></div>
-  <div class="day"><div class="day-number">13</div></div>
-  <div class="day"><div class="day-number">14</div></div>
-  <div class="day"><div class="day-number">15</div></div>
-  <div class="day weekend"><div class="day-number">16</div></div>
-  <div class="day weekend"><div class="day-number">17</div></div>
-  <div class="day"><div class="day-number">18</div></div>
-  <div class="day"><div class="day-number">19</div></div>
-  <div class="day"><div class="day-number">20</div></div>
-  <div class="day"><div class="day-number">21</div></div>
-  <div class="day"><div class="day-number">22</div></div>
-  <div class="day weekend"><div class="day-number">23</div></div>
-  <div class="day weekend"><div class="day-number">24</div></div>
-  <div class="day"><div class="day-number">25</div></div>
-  <div class="day"><div class="day-number">26</div></div>
-  <div class="day"><div class="day-number">27</div></div>
-  <div class="day"><div class="day-number">28</div></div>
-  <div class="day"><div class="day-number">29</div></div>
-  <div class="day weekend"><div class="day-number">30</div></div>
-  <div class="day weekend"><div class="day-number">31</div></div>
-</div>
-
-<h2>Září 2025</h2>
-<div class="calendar" data-month="2025-09">
-  <div class="day"><div class="day-number">1</div></div>
-  <div class="day"><div class="day-number">2</div></div>
-  <div class="day"><div class="day-number">3</div></div>
-  <div class="day"><div class="day-number">4</div></div>
-  <div class="day"><div class="day-number">5</div></div>
-  <div class="day weekend"><div class="day-number">6</div></div>
-  <div class="day weekend"><div class="day-number">7</div></div>
-  <div class="day"><div class="day-number">8</div></div>
-  <div class="day"><div class="day-number">9</div></div>
-  <div class="day"><div class="day-number">10</div></div>
-  <div class="day"><div class="day-number">11</div></div>
-  <div class="day"><div class="day-number">12</div></div>
-  <div class="day weekend"><div class="day-number">13</div></div>
-  <div class="day weekend"><div class="day-number">14</div></div>
-  <div class="day"><div class="day-number">15</div></div>
-  <div class="day"><div class="day-number">16</div></div>
-  <div class="day"><div class="day-number">17</div></div>
-  <div class="day"><div class="day-number">18</div></div>
-  <div class="day"><div class="day-number">19</div></div>
-  <div class="day weekend"><div class="day-number">20</div></div>
-  <div class="day weekend"><div class="day-number">21</div></div>
-  <div class="day"><div class="day-number">22</div></div>
-  <div class="day"><div class="day-number">23</div></div>
-  <div class="day"><div class="day-number">24</div></div>
-  <div class="day"><div class="day-number">25</div></div>
-  <div class="day"><div class="day-number">26</div></div>
-  <div class="day weekend"><div class="day-number">27</div></div>
-  <div class="day weekend"><div class="day-number">28</div></div>
-  <div class="day"><div class="day-number">29</div></div>
-  <div class="day"><div class="day-number">30</div></div>
-</div>
-
+<script src="artur.js"></script>
 <script>
-const events = [
-	{ date: "2025-07-31", label: "Narozen?", color: "blue", note: "Odhadované datum narození" },
-	{ date: "2025-08-21", label: "Odchyt", color: "orange", note: "Odchycen & Přivezen" },
-	{ date: "2025-08-22", label: "Odčervení I", color: "purple", note: "1. odčervení (mikro-dávka)" },
-	{ date: "2025-08-24", label: "Odčervení II", color: "purple", note: "2. odčervení (dávka podle návodu)" },
-	{ date: "2025-09-07", label: "Odčervení III", color: "purple", note: "3. dávka odčervení" },
-	{ date: "2025-09-18", label: "Očkování & čip", color: "black", note: "Od 7 týdne se už může očkovat (Andrea Stankova)" },
-	{ date: "2025-09-21", label: "Odčervení IV", color: "purple", note: "4. dávka odčervení" },
-	{ date: "2025-09-25", label: "Připraven k adopci", color: "orange", note: "Připraven k adopci" },
-];
 
 // vložení štítků
 events.forEach(ev => {
