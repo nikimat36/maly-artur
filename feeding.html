@@ -4,14 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://fav.farm/🍼" /> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
   <title>Kalkulačka mléka pro štěně</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 15px;
-      line-height: 1.5;
-      color: #222;
-    }
+	body{
+		margin-top:20px;
+		color: #1a202c;
+		text-align: left;
+		background-color: #e2e8f0;    
+	}
+	.main-body {
+		padding: 15px;
+	}
+	.card {
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+		padding: 10px;
+	}
     h2 {
       text-align: center;
       margin-bottom: 20px;
@@ -66,35 +75,59 @@
   </style>
 </head>
 <body>
-  <h2>Kalkulačka denní dávky mléka</h2>
-  
-  <label>Hmotnost štěněte (g):
-    <input type="number" id="weight" value="1420" placeholder="např. 1200">
-  </label>
-  
-  <label>Datum narození štěněte:
-    <input type="date" id="dob" value="2025-08-05">
-  </label>
-  
-  <label>Velikost odměrky:
-    <select id="scoop">
-      <option value="4.5">Malá (4,5 g)</option>
-      <option value="15" selected>Velká (15 g)</option>
-    </select>
-  </label>
-  
-  <button onclick="calculate()">Spočítat</button>
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:void(0)">Krmení</a></li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+		  <div class="card">
+			  <h2>Kalkulačka denní dávky mléka</h2>
+			  
+			  <label>Hmotnost štěněte (g):
+				<input type="number" id="weight" placeholder="např. 1200">
+			  </label>
+			  
+			  <label>Datum narození štěněte:
+				<input type="date" id="dob">
+			  </label>
+			  
+			  <label>Velikost odměrky:
+				<select id="scoop">
+				  <option value="4.5">Malá (4,5 g)</option>
+				  <option value="15" selected>Velká (15 g)</option>
+				</select>
+			  </label>
+			  
+			  <button onclick="calculate()">Spočítat</button>
 
-  <div id="result"></div>
-  <div id="guide"></div>
-
+			  <div id="result"></div>
+		</div>
+		
+		<div class="card">
+			<div id="guide" ></div>
+		</div>
+	</div>
+</div>
+  <script src="artur.js"></script>
   <script>
-	calculate();
+	onLoad();
 	
+	function onLoad(){
+		document.getElementById("dob").value = puppy.born;
+		document.getElementById("weight").value = puppy.weight;
+		document.getElementById("dob").value = puppy.born;
+		calculate();
+	}
     function calculate() {
-      const w = parseFloat(document.getElementById("weight").value);
-      const scoopSize = parseFloat(document.getElementById("scoop").value);
-      const dob = document.getElementById("dob").value;
+	  const scoopSize = parseFloat(document.getElementById("scoop").value);
+      const w = parseFloat(puppy.weight);
+	  const ageDays = puppy.age;
 
       const points = [
         { w: 250, d: 100 },
@@ -104,15 +137,11 @@
         { w: 5000, d: 900 }
       ];
 
-      if (isNaN(w) || !dob) {
+      if (isNaN(w) || !puppy.born) {
         document.getElementById("result").innerText = "Zadej prosím hmotnost a datum narození.";
         document.getElementById("guide").innerText = "";
         return;
       }
-
-      const today = new Date();
-      const birthDate = new Date(dob);
-      const ageDays = Math.floor((today - birthDate) / (1000*60*60*24));
 
       let feeds = null;
       if (ageDays >= 2 && ageDays <= 14) feeds = {min:6, max:8};
@@ -124,10 +153,11 @@
 
       let d = null;
       for (let i = 0; i < points.length - 1; i++) {
-        let p1 = points[i], p2 = points[i + 1];
+        let p1 = points[i];
+		let p2 = points[i + 1];
+		
         if (w >= p1.w && w <= p2.w) {
-          let slope = (p2.d - p1.d) / (p2.w - p1.w);
-          d = p1.d + slope * (w - p1.w);
+          d = p1.d + ((p2.d - p1.d) / (p2.w - p1.w)) * (w - p1.w);
         }
       }
 
@@ -138,7 +168,6 @@
         let powder = d * 30 / 125;
         let water = d * 100 / 125;
         let scoops = powder / scoopSize;
-
         let feedCount = feeds ? Math.ceil((feeds.min + feeds.max) / 2) : 0;
         let perFeed = feedCount > 0 ? (d / feedCount) : 0;
 
