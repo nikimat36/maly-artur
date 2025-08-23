@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendář událostí</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 40px;
+    }
+    .day {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 5px;
+      min-height: 80px;
+      background: #fafafa;
+      position: relative;
+    }
+	
+	.weekend{
+		background: #cfcfcf;
+	}
+	
+    .day-number {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .empty {
+      background: transparent;
+      border: none;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      margin: 2px 0;
+      border-radius: 12px;
+      font-size: 12px;
+      color: white;
+      cursor: pointer;
+      position: relative;
+    }
+    .tag:hover::after {
+      content: attr(data-note);
+      position: absolute;
+      left: 0;
+      top: 110%;
+      white-space: nowrap;
+      background: #333;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      z-index: 10;
+    }
+    /* Barvy štítků */
+    .purple { background-color: #8e44ad; } /* odčervení */
+    .blue { background-color: #3498db; }   /* narození */
+    .orange { background-color: #e67e22; } /* odchyt */
+	.black { background-color: #000000; } /* očkování */
+
+    /* Styl pro prošlé dny */
+    .past {
+      text-decoration: line-through;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Srpen 2025</h2>
+<div class="calendar" data-month="2025-08">
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day empty"></div>
+  <div class="day"><div class="day-number">1</div></div>
+  <div class="day weekend"><div class="day-number">2</div></div>
+  <div class="day weekend"><div class="day-number">3</div></div>
+  <div class="day"><div class="day-number">4</div></div>
+  <div class="day"><div class="day-number">5</div></div>
+  <div class="day"><div class="day-number">6</div></div>
+  <div class="day"><div class="day-number">7</div></div>
+  <div class="day"><div class="day-number">8</div></div>
+  <div class="day weekend"><div class="day-number">9</div></div>
+  <div class="day weekend"><div class="day-number">10</div></div>
+  <div class="day"><div class="day-number">11</div></div>
+  <div class="day"><div class="day-number">12</div></div>
+  <div class="day"><div class="day-number">13</div></div>
+  <div class="day"><div class="day-number">14</div></div>
+  <div class="day"><div class="day-number">15</div></div>
+  <div class="day weekend"><div class="day-number">16</div></div>
+  <div class="day weekend"><div class="day-number">17</div></div>
+  <div class="day"><div class="day-number">18</div></div>
+  <div class="day"><div class="day-number">19</div></div>
+  <div class="day"><div class="day-number">20</div></div>
+  <div class="day"><div class="day-number">21</div></div>
+  <div class="day"><div class="day-number">22</div></div>
+  <div class="day weekend"><div class="day-number">23</div></div>
+  <div class="day weekend"><div class="day-number">24</div></div>
+  <div class="day"><div class="day-number">25</div></div>
+  <div class="day"><div class="day-number">26</div></div>
+  <div class="day"><div class="day-number">27</div></div>
+  <div class="day"><div class="day-number">28</div></div>
+  <div class="day"><div class="day-number">29</div></div>
+  <div class="day weekend"><div class="day-number">30</div></div>
+  <div class="day weekend"><div class="day-number">31</div></div>
+</div>
+
+<h2>Září 2025</h2>
+<div class="calendar" data-month="2025-09">
+  <div class="day"><div class="day-number">1</div></div>
+  <div class="day"><div class="day-number">2</div></div>
+  <div class="day"><div class="day-number">3</div></div>
+  <div class="day"><div class="day-number">4</div></div>
+  <div class="day"><div class="day-number">5</div></div>
+  <div class="day weekend"><div class="day-number">6</div></div>
+  <div class="day weekend"><div class="day-number">7</div></div>
+  <div class="day"><div class="day-number">8</div></div>
+  <div class="day"><div class="day-number">9</div></div>
+  <div class="day"><div class="day-number">10</div></div>
+  <div class="day"><div class="day-number">11</div></div>
+  <div class="day"><div class="day-number">12</div></div>
+  <div class="day weekend"><div class="day-number">13</div></div>
+  <div class="day weekend"><div class="day-number">14</div></div>
+  <div class="day"><div class="day-number">15</div></div>
+  <div class="day"><div class="day-number">16</div></div>
+  <div class="day"><div class="day-number">17</div></div>
+  <div class="day"><div class="day-number">18</div></div>
+  <div class="day"><div class="day-number">19</div></div>
+  <div class="day weekend"><div class="day-number">20</div></div>
+  <div class="day weekend"><div class="day-number">21</div></div>
+  <div class="day"><div class="day-number">22</div></div>
+  <div class="day"><div class="day-number">23</div></div>
+  <div class="day"><div class="day-number">24</div></div>
+  <div class="day"><div class="day-number">25</div></div>
+  <div class="day"><div class="day-number">26</div></div>
+  <div class="day weekend"><div class="day-number">27</div></div>
+  <div class="day weekend"><div class="day-number">28</div></div>
+  <div class="day"><div class="day-number">29</div></div>
+  <div class="day"><div class="day-number">30</div></div>
+</div>
+
+<script>
+const events = [
+	{ date: "2025-08-05", label: "Narozen?", color: "blue", note: "Odhadované datum narození" },
+	{ date: "2025-08-21", label: "Odchyt", color: "orange", note: "Odchycen & Přivezen" },
+	{ date: "2025-08-22", label: "Odčervení", color: "purple", note: "1. odčervení (mikro-dávka)" },
+	{ date: "2025-08-24", label: "Odčervení", color: "purple", note: "2. odčervení (dávka podle návodu)" },
+	{ date: "2025-09-07", label: "Odčervení", color: "purple", note: "3. dávka odčervení" },
+	{ date: "2025-09-16", label: "Očkování", color: "black", note: "Od 6týdne se už může očkovat (Andrea Stankova)" },
+	{ date: "2025-09-21", label: "Odčervení", color: "purple", note: "4. dávka odčervení" },
+];
+
+// vložení štítků
+events.forEach(ev => {
+	const [year, month, day] = ev.date.split("-");
+	const calendar = document.querySelector(`.calendar[data-month="${year}-${month}"]`);
+	if (!calendar) return;
+	
+	const dayDiv = Array.from(calendar.querySelectorAll(".day"))
+		.find(d => d.querySelector(".day-number")?.textContent === String(parseInt(day)));
+	if (dayDiv) {
+		const tag = document.createElement("span");
+		tag.className = `tag ${ev.color}`;
+		tag.textContent = ev.label;
+		tag.setAttribute("data-note", ev.note);
+		dayDiv.appendChild(tag);
+	}
+});
+
+// označení minulých dnů křížkem
+const today = new Date();
+document.querySelectorAll(".calendar").forEach(cal => {
+  const [year, month] = cal.dataset.month.split("-");
+  cal.querySelectorAll(".day-number").forEach(num => {
+    const d = new Date(year, month - 1, num.textContent);
+    if (d < today) {
+		num.classList.add("past");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
