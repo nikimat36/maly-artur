@@ -119,16 +119,15 @@
 	onLoad();
 	
 	function onLoad(){
-		document.getElementById("dob").value = puppy.born;
-		document.getElementById("weight").value = puppy.weight;
-		document.getElementById("dob").value = puppy.born;
+		document.getElementById("dob").value = puppy.born.value;
+		document.getElementById("weight").value = puppy.weight.value;
 		calculate();
 	}
     function calculate() {
 	  const scoopSize = parseFloat(document.getElementById("scoop").value);
-      const w = parseFloat(puppy.weight);
-	  const ageDays = puppy.age;
-
+      const w = parseFloat(document.getElementById("weight").value);
+	  const ageDays = Math.floor((new Date() - new Date(document.getElementById("dob").value)) / (1000*60*60*24));
+	  
       const points = [
         { w: 250, d: 100 },
         { w: 500, d: 160 },
@@ -185,7 +184,7 @@
           document.getElementById("guide").innerHTML = `
             <h3>Návod k přípravě</h3>
             <p>1️⃣ Ohřej <b>${water.toFixed(0)} ml</b> vody na cca 50 °C.</p>
-            <p>2️⃣ Přidej <b>${powder.toFixed(1)} g</b> prášku (${scoops.toFixed(1)} odměrek po ${scoopSize} g).</p>
+            <p>2️⃣ Přidej <b>${powder.toFixed(1)} g</b> prášku (${scoops.toFixed(1)} zarovnaných odměrek).</p>
             <p>3️⃣ Dobře promíchej, aby nezůstaly hrudky.</p>
             <p>4️⃣ Zchlaď na tělesnou teplotu (cca 37 °C).</p>
             <p>5️⃣ Celkovou denní dávku <b>${d.toFixed(0)} ml</b> rozděl na <b>${feedCount}</b> krmení.</p>
