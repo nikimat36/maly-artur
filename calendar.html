@@ -255,17 +255,17 @@
 	});
 
 	const todayD = new Date();
-	todayD.setHours(0,0,0,0).toString();
+	todayD.setHours(0,0,0,0);
 	
 	document.querySelectorAll(".calendar").forEach(cal => {
 	  const [year, month] = cal.dataset.month.split("-");
 	  cal.querySelectorAll(".day-number").forEach(num => {
-		const dayD = new Date(year, month - 1, num.textContent).toString();
+		const dayD = new Date(year, month - 1, num.textContent);
 
-		if (dayD < todayD) {
-			num.classList.add("past");
-		}else if(dayD == todayD){
+		if(dayD.toString() == todayD.toString()){
 			num.classList.add("now");
+		} else if (dayD < todayD) {
+			num.classList.add("past");
 		}
 	  });
 	});
