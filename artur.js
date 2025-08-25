@@ -28,4 +28,5 @@ var events = [
 	{ date: "2025-09-18", label: "Připraven k adopci", 	color: "blue", 	note: "Připraven k adopci" },
 ];
 
+var testVar = 'this wasn\'t here...';
 
