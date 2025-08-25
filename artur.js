@@ -6,7 +6,7 @@ puppy.breed = {
 	note: 'asi labrador'
 };
 puppy.born = {
-	value: '2025-07-31',
+	value: '2025-07-24',
 	note: 'odhadem'
 };
 puppy.weight = {
@@ -23,7 +23,8 @@ var events = [
 	{ date: "2025-08-24", label: "Pod Spolkem", 		color: "blue", 		note: "Převezen k Barči, ofiko pod Spolkem" },
 	{ date: "2025-08-24", label: "Odčervení", 			color: "purple", 	note: "2. odčervení (dávka podle návodu)" },
 	{ date: "2025-09-07", label: "Odčervení", 			color: "purple", 	note: "3. dávka odčervení" },
-	{ date: "2025-09-18", label: "Očkování & čip", 		color: "black", 	note: "Od 7 týdne se už může očkovat (Andrea Stankova)" },
+	{ date: "2025-09-11", label: "Očkování & čip", 		color: "black", 	note: "Od 7 týdne se už může očkovat (Andrea Stankova)" },
 	{ date: "2025-09-21", label: "Odčervení", 			color: "purple", 	note: "4. dávka odčervení" },
-	{ date: "2025-09-25", label: "Připraven k adopci", 	color: "blue", 	note: "Připraven k adopci" },
+	{ date: "2025-09-18", label: "Připraven k adopci", 	color: "blue", 	note: "Připraven k adopci" },
 ];
+
